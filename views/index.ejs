@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="/styles.css" />
+  <title>URL Shortener</title>
+</head>
+<body>
+
+  <!-- ⭐ STARFALL BACKGROUND -->
+  <div class="starfall">
+    <% for (let i = 0; i < 40; i++) { %>
+      <div
+        class="falling-star"
+        style="--i:<%= Math.random() %>;"
+      ></div>
+    <% } %>
+  </div>
+
+  <!-- 🚀 APP -->
+  <div class="app-wrapper">
+    <div class="app-card">
+
+      <div class="header">
+        <span>🔗</span>
+        <h1>URL Shortener</h1>
+      </div>
+
+      <form action="/" method="POST">
+        <div class="form-group">
+          <label>Enter Full URL</label>
+          <input
+            type="url"
+            name="Fullurl"
+            placeholder="https://example.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Custom Short URL (optional)</label>
+          <input
+            type="text"
+            name="customShort"
+            placeholder="google, mysite"
+          />
+        </div>
+
+        <button type="submit">🚀 Shrink URL</button>
+      </form>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Full URL</th>
+              <th>Short URL</th>
+              <th>Clicks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% urls.forEach(url => { %>
+              <tr>
+                <td class="full-url" title="<%= url.full %>">
+                  <%= url.full %>
+                </td>
+                <td>
+                  <a class="short-link" href="/<%= url.short %>" target="_blank">
+                    <%= url.short %>
+                  </a>
+                </td>
+                <td>
+                  <div class="badge"><%= url.clicks %></div>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="footer">
+        Built by Subhodhraj 🚀
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

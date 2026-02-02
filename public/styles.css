@@ -1,0 +1,231 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+  overflow: hidden;
+  min-height: 100vh;
+  font-family: "Inter", "Segoe UI", sans-serif;
+
+  background-color: #000000;
+  background-image: url("https://images.unsplash.com/photo-1536152470836-b943b246224c?auto=format&fit=crop&w=1476&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Mobile background fix */
+@media (max-width: 600px) {
+  body {
+    background-size: auto;
+    background-position: right;
+  }
+}
+
+/* ================= STARFALL ================= */
+.starfall {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.starfall .falling-star {
+  width: 6px;
+  height: 6px;
+  background: #00ffe0;
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* Use same animation, reduced CPU load */
+.falling-star {
+  animation: starfall 4s linear infinite;
+}
+
+@keyframes starfall {
+  0% {
+    transform: translateY(-10px) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) translateX(200px);
+    opacity: 0;
+  }
+}
+
+/* Random positions */
+.falling-star:nth-child(n) {
+  left: calc(100% * var(--i));
+  animation-delay: calc(var(--i) * 1s);
+}
+
+/* ================= APP CONTAINER ================= */
+.app-wrapper {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* ================= GLASS CARD ================= */
+.app-card {
+  width: 100%;
+  max-width: 1000px;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-radius: 18px;
+  padding: 35px;
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+  animation: fadeUp 0.8s ease;
+}
+
+/* ================= HEADER ================= */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.header h1 {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.header span {
+  font-size: 32px;
+}
+
+/* ================= FORM ================= */
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 255, 224, 0.4);
+}
+
+/* ================= BUTTON ================= */
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 14px;
+  font-size: 17px;
+  font-weight: 700;
+
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #00ffe0, #5a67d8);
+  color: #000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 255, 224, 0.5);
+}
+
+/* ================= TABLE ================= */
+.table-wrapper {
+  margin-top: 35px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+th, td {
+  padding: 14px;
+  color: #ffffff;
+}
+
+tbody tr:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.full-url {
+  max-width: 420px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.short-link {
+  color: #00ffe0;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.short-link:hover {
+  text-decoration: underline;
+}
+
+.badge {
+  background: rgba(0, 255, 224, 0.25);
+  color: #00ffe0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  margin-top: 30px;
+  text-align: center;
+  color: #e2e8f0;
+  font-size: 14px;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
