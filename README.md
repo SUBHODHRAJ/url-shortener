@@ -1,0 +1,3 @@
+- Developed a URL shortening service to convert long URLs into compact, shareable links  
+- Implemented unique ID generation and database mapping for efficient redirection  
+- Designed REST APIs for URL creation and retrieval with fast lookup performance  
